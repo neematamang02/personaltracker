@@ -151,13 +151,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const expenseElem = document.getElementById("total-expense");
     const savingElem = document.getElementById("total-saving");
     const totalBudgetElem = document.getElementById("total-budget");
+    const totalBudgetElemtable = document.getElementById("total-budget-table");
     if (incomeElem) incomeElem.textContent = `$${totalIncome}`;
     if (expenseElem) expenseElem.textContent = `$${totalExpense}`;
     if (savingElem) savingElem.textContent = `$${totalSaving}`;
-    if (totalBudgetElem)
-      totalBudgetElem.textContent = `$${
-        totalIncome - totalExpense - totalSaving
-      }`;
+    // if (totalBudgetElem)
+    //   totalBudgetElem.textContent = `$${
+    //     totalIncome - totalExpense - totalSaving
+    //   }`;
+
+    const totalbudget = totalIncome - totalExpense - totalSaving;
+    if (totalBudgetElem) {
+      totalBudgetElem.textContent = `$${totalbudget}`;
+    }
+    if (totalBudgetElemtable) {
+      totalBudgetElemtable.textContent = `$${totalbudget}`;
+    }
   }
 
   function generateChart() {
