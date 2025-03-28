@@ -1,5 +1,5 @@
 <?php
-include "./db.php"; // Ensures DB & table exist
+include "../db.php"; // Ensures DB & table exist
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
