@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +18,7 @@
           <!-- Logo -->
           <div class="flex-shrink-0">
             <!-- Adjust the path if your logo is in a subfolder (e.g., images/logo.png) -->
-            <img class="h-8 w-8" src="images/logo.png" alt="Logo" />
+            <img class="h-10 w-10" src="icons/logo.webp" alt="Logo" />
           </div>
           <!-- Desktop Menu -->
           <div class="hidden md:flex space-x-4">
@@ -27,9 +28,19 @@
             <a href="aboutus.html" class="text-gray-700 hover:text-gray-900"
               >About Us</a
             >
-            <a href="profile.html" class="text-gray-700 hover:text-gray-900"
-              >Profile</a
+            <?php if(isset($_SESSION['user_id'])): ?>
+            <span class="text-gray-700"
+              ><?php echo htmlspecialchars($_SESSION['username']); ?></span
             >
+            <a href="logout.php" class="text-blue-800 hover:text-gray-900"
+              >Logout</a
+            >
+            <?php else: ?>
+            <a href="l.html" class="text-blue-800 hover:text-gray-900">Login</a>
+            <a href="s.html" class="text-blue-800 hover:text-gray-900"
+              >Register</a
+            >
+            <?php endif; ?>
           </div>
           <!-- Mobile Menu Button -->
           <div class="md:hidden">
@@ -66,11 +77,23 @@
           class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
           >About Us</a
         >
-        <a
-          href="profile.html"
-          class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-          >Profile</a
+        <?php if(isset($_SESSION['user_id'])): ?>
+        <span class="block px-4 py-2 text-gray-700"
+          ><?php echo htmlspecialchars($_SESSION['username']); ?></span
         >
+        <a
+          href="logout.php"
+          class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Logout</a
+        >
+        <?php else: ?>
+        <a href="l.html" class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Login</a
+        >
+        <a href="s.html" class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Register</a
+        >
+        <?php endif; ?>
       </div>
     </nav>
 

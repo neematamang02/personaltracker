@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,15 +18,28 @@
           </div>
           <!-- Desktop Menu -->
           <div class="hidden md:flex space-x-4">
-            <a href="homepage.html" class="text-gray-700 hover:text-gray-900"
+            <a href="homepage.php" class="text-gray-700 hover:text-gray-900"
               >Homepage</a
             >
-            <a href="aboutus.html" class="text-gray-700 hover:text-gray-900"
+            <a href="aboutus.php" class="text-gray-700 hover:text-gray-900"
               >About Us</a
             >
-            <a href="profile.html" class="text-gray-700 hover:text-gray-900"
+            <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="profile.php" class="text-gray-700 hover:text-gray-900"
               >Profile</a
             >
+            <span class="text-gray-700"
+              ><?php echo htmlspecialchars($_SESSION['username']); ?></span
+            >
+            <a href="logout.php" class="text-blue-800 hover:text-gray-900"
+              >Logout</a
+            >
+            <?php else: ?>
+            <a href="l.php" class="text-blue-800 hover:text-gray-900">Login</a>
+            <a href="s.php" class="text-blue-800 hover:text-gray-900"
+              >Register</a
+            >
+            <?php endif; ?>
           </div>
           <!-- Mobile Menu Button -->
           <div class="md:hidden">
@@ -53,20 +67,37 @@
       <!-- Mobile Menu -->
       <div class="md:hidden" id="mobile-menu" style="display: none">
         <a
-          href="homepage.html"
+          href="homepage.php"
           class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
           >Homepage</a
         >
         <a
-          href="aboutus.html"
+          href="aboutus.php"
           class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
           >About Us</a
         >
+        <?php if(isset($_SESSION['user_id'])): ?>
         <a
-          href="profile.html"
+          href="profile.php"
           class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
           >Profile</a
         >
+        <span class="block px-4 py-2 text-gray-700"
+          ><?php echo htmlspecialchars($_SESSION['username']); ?></span
+        >
+        <a
+          href="logout.php"
+          class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Logout</a
+        >
+        <?php else: ?>
+        <a href="l.php" class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Login</a
+        >
+        <a href="s.php" class="block px-4 py-2 text-blue-800 hover:bg-gray-200"
+          >Register</a
+        >
+        <?php endif; ?>
       </div>
     </nav>
 
@@ -95,17 +126,17 @@
       <nav>
         <ul>
           <li>
-            <a href="tracker.html" class="block p-4 hover:bg-gray-200"
+            <a href="tracker.php" class="block p-4 hover:bg-gray-200"
               >Dashboard</a
             >
           </li>
           <li>
-            <a href="transactions.html" class="block p-4 hover:bg-gray-200"
+            <a href="transactions.php" class="block p-4 hover:bg-gray-200"
               >Transactions</a
             >
           </li>
           <li>
-            <a href="settings.html" class="block p-4 hover:bg-gray-200"
+            <a href="settings.php" class="block p-4 hover:bg-gray-200"
               >Settings</a
             >
           </li>

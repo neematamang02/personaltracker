@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Login - Expense Tracker</title>
     <style>
       body {
@@ -87,6 +89,76 @@
     </style>
   </head>
   <body>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <!-- Adjust the path if your logo is in a subfolder (e.g., images/logo.png) -->
+            <a href="/financetacker/landingpage.html">
+              <img class="h-10 w-10" src="icons/logo.webp" alt="Logo"
+            /></a>
+          </div>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-4">
+            <a href="homepage.html" class="text-gray-700 hover:text-gray-900"
+              >Homepage</a
+            >
+            <a href="aboutus.html" class="text-gray-700 hover:text-gray-900"
+              >About Us</a
+            >
+            <a href="l.html" class="text-blue-800 hover:text-gray-900">Login</a>
+            <a href="s.html" class="text-blue-800 hover:text-gray-900"
+              >Register</a
+            >
+          </div>
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-gray-700 hover:text-gray-900 focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="md:hidden" id="mobile-menu" style="display: none">
+        <a
+          href="homepage.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+          >Homepage</a
+        >
+        <a
+          href="aboutus.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+          >About Us</a
+        >
+        <a
+          href="./authentication/l.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+          >Login</a
+        >
+        <a
+          href="./authentication/s.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+          >Signup</a
+        >
+      </div>
+    </nav>
     <div class="container">
       <img
         src="https://scontent.fpkr3-1.fna.fbcdn.net/v/t1.15752-9/484558060_624454513679285_1619993849434325200_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=j9JqKoRRal8Q7kNvgEKDPja&_nc_oc=AdnLTQBY4QiHoIcndUrK-X0dQXu2UVJ-2BYaey4305HmnwuqPecFcaoLXGPClRLqPwIEceibHZJEdwfi6u8TIacL&_nc_ad=z-m&_nc_cid=1750&_nc_zt=23&_nc_ht=scontent.fpkr3-1.fna&stp=c0.5000x0.5000f_dst-emg0_p480x251_q75_tt6&ur=0024fc&_nc_sid=c24604&oh=03_Q7cD1wFG8wECA4vj7G9SiwaCvN1a4cDHHsi32Mj3qNcd5Vhx7Q&oe=68061CAF"
@@ -152,7 +224,7 @@
           .then((data) => {
             alert(data.message);
             if (data.status === "success") {
-              window.location.href = "/personaltracker/tracker.html";
+              window.location.href = "/financetacker/tracker.html";
             }
           })
           .catch((error) => console.error("Error:", error));

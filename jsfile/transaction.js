@@ -64,15 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("api.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type, amount, expenseType, date }),
+        body: JSON.stringify({ type, amount, expenseType: "food", date }),
       })
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then((data) => {
+          console.log(data);
           if (data.message) {
             alert(data.message);
             fetchTransactions();
           } else {
-            alert(data.error || "Error adding transaction");
+            alert(data.error || "Error adding");
           }
         })
         .catch((err) => console.error("Error adding transaction:", err));
